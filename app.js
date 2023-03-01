@@ -1,18 +1,18 @@
-const loadData = async (searchText) => {
+const loadData = async (searchText, dataLimit) => {
 	const URL = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 	const res = await fetch(URL);
 	const data = await res.json();
-	displayPhone(data.data);
+	displayPhone(data.data, dataLimit);
 };
 
-const displayPhone = (phones) => {
+const displayPhone = (phones, dataLimit) => {
 	const phonesContainer = document.getElementById('phones-container');
 	phonesContainer.textContent = '';
 
 	// displaying 10 phones only
-	const showBtnBox = document.getElementById('btn-show-box');
+	const showBtnBox = document.getElementById('btn-show-more-box');
 
-	if (phones.length > 10) {
+	if (dataLimit && phones.length > 10) {
 		phones = phones.slice(0, 10);
 		showBtnBox.classList.remove('d-none');
 	} else {
@@ -40,6 +40,7 @@ const displayPhone = (phones) => {
 						This is a longer card with supporting text below as a natural lead-in to additional content. This
 						content is a little bit longer.
 					</p>
+					<button class="btn btn-success px-4">Details</button>
 				</div>
 			</div>
 		`;
@@ -50,16 +51,20 @@ const displayPhone = (phones) => {
 	spinner(false);
 };
 
-document.getElementById('search-btn').addEventListener('click', function () {
+const searchProcess = (dataLimit) => {
 	// start loader
 	spinner(true);
-
 	const searchField = document.getElementById('search-field');
 	const searchText = searchField.value;
 	console.log(searchText);
-	loadData(searchText);
+	loadData(searchText, dataLimit);
+};
+document.getElementById('search-btn').addEventListener('click', function () {
+	searchProcess(10);
 });
-
+document.getElementById('btn-show-more').addEventListener('click', function () {
+	searchProcess();
+});
 const spinner = (isLoading) => {
 	const loader = document.getElementById('loader');
 	if (isLoading) {

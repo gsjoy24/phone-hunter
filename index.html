@@ -14,16 +14,16 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<header class="p-5">
+		<header class="px-2 py-5 m-auto">
 			<h1 class="text-center fw-bold p-5 display-3">Welcome to Phone Hunter</h1>
-			<div class="form-floating w-50 mx-auto d-flex gap-3">
+			<div class="form-floating mx-auto d-block d-sm-flex gap-3">
 				<input id="search-field" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" />
 				<label for="floatingTextarea">Search here</label>
-				<button id="search-btn" class="btn btn-primary px-5">SEARCH</button>
+				<button id="search-btn" class="btn btn-primary px-5 py-3 mt-sm-0 mt-3 mx-auto d-block">SEARCH</button>
 			</div>
 		</header>
 		<main class="container">
-			<section>
+			<section class="px-5">
 				<div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
 			</section>
 			<div id="no-phone-found" class="alert alert-danger alert-dismissible fade show w-75 d-none mx-auto" role="alert">
@@ -38,8 +38,8 @@
 					</div>
 				</div>
 			</section>
-			<div id="btn-show-box" class="d-none p-5">
-				<button id="btn-show" class="btn btn-success m-auto d-block px-3">Show More</button>
+			<div id="btn-show-more-box" class="d-none p-5">
+				<button id="btn-show-more" class="btn btn-success m-auto d-block px-3">Show More</button>
 			</div>
 		</main>
 		<script
